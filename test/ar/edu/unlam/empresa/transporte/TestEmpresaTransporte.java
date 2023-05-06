@@ -10,7 +10,7 @@ public class TestEmpresaTransporte {
 	public void queSePuedaAgregarUnaMoto(){
 		Empresa empresa;
 		
-		Moto moto;
+		Vehiculo moto;
 		String marca;
 		String patente;
 		
