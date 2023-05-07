@@ -38,8 +38,11 @@ public class Empresa {
 		
 	}
 	
-	public void asignarChoferAUnVehiculo(Chofer chofer, Vehiculo vehiculo) {
-		vehiculo.setChofer(chofer);
+	public void asignarChoferAUnVehiculo(Integer idBuscado, String patenteBuscada) {
+		Vehiculo v = buscarVehiculo(patenteBuscada);
+		Chofer c = buscarChofer(idBuscado);
+		
+		v.setChofer(c);
 	}
 
 	public Vehiculo buscarVehiculo(String patente) {

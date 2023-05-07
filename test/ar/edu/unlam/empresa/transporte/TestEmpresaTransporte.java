@@ -70,26 +70,57 @@ public class TestEmpresaTransporte {
 	}
 	
 	@Test
+	public void queSePuedaBuscarUnVehiculo(){
+		Empresa empresa; Coche coche; Vehiculo vehiculoBuscado;
+		String marca = "audi";
+		String patente = "yt218";
+		Integer kilometros = 0;
+		String patenteBuscada = "yt218";
+		
+		empresa = new Empresa();
+		coche = new Coche(patente, marca, kilometros);
+		empresa.agregarCoche(coche);
+		vehiculoBuscado = empresa.buscarVehiculo("yt218");
+		
+		assertEquals(patenteBuscada, vehiculoBuscado.getPatente());
+	}
+	
+	@Test
+	public void queSePuedaBuscarUnChofer(){
+		Empresa empresa;
+		Chofer chofer, choferBuscado;
+		String nombre = "mario"; Integer id = 1;
+		Integer idBuscada = 1;
+		
+		empresa = new Empresa();
+		chofer = new Chofer(nombre, id);
+		empresa.agregarChofer(chofer);
+		choferBuscado = empresa.buscarChofer(1);
+		
+		assertEquals(idBuscada, choferBuscado.getId());
+	}
+	
+	@Test
 	public void queSePuedaAsignarUnChoferAUnCoche(){
 		Empresa empresa;
 		Chofer chofer, choferBuscado;
-		String nombre = "mario";
-		Integer id = 1;
+		String nombre = "mario"; Integer id = 1;
 		Coche coche;
 		Vehiculo vehiculoBuscado;
 		String marca = "audi";
 		String patente = "yt218";
 		Integer kilometros = 0;
+		Integer idBuscado = 1;
+		String patenteBuscada = "yt218";
 		
 		empresa = new Empresa();
 		chofer = new Chofer(nombre, id);
 		coche = new Coche(marca, patente, kilometros);
-		empresa.agregarCoche(coche);
-		vehiculoBuscado = empresa.buscarVehiculo("yt218");
-		choferBuscado = empresa.buscarChofer(1);
-		empresa.asignarChoferAUnVehiculo(choferBuscado, vehiculoBuscado);
+		empresa.agregarCoche(coche); empresa.agregarChofer(chofer);
+		vehiculoBuscado = empresa.buscarVehiculo(patenteBuscada);
+		empresa.asignarChoferAUnVehiculo(idBuscado, patenteBuscada);
 		
-		assertEquals(1, vehiculoBuscado.getChofer().getId());
+		assertEquals(idBuscado, vehiculoBuscado.chofer.getId());
 	}
 	@Test
 	public void queSePuedaAsignarUnChoferAUnVehiculo() {
